@@ -74,6 +74,8 @@ public class LoginController {
                 return ToutiaoUtil.getJSONString(1, map);
             }
 
+
+
         } catch (Exception e) {
             logger.error("注册异常" + e.getMessage());
             return ToutiaoUtil.getJSONString(1, "注册异常");
