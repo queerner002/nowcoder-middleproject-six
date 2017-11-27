@@ -40,7 +40,7 @@ public class NewsService {
     }
 
     public String saveImage(MultipartFile file) throws IOException {
-        int dotPos = file.getOriginalFilename().lastIndexOf(".");
+        int dotPos = file.getOriginalFilename().lastIndexOf("."); //本地的文件的名字，判断后缀名是不是图片格式
         if (dotPos < 0) {
             return null;
         }

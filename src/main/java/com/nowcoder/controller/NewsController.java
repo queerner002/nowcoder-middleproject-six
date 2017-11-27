@@ -86,14 +86,14 @@ public class NewsController {
 
     @RequestMapping(path = {"/uploadImage/"}, method = {RequestMethod.POST})
     @ResponseBody
-    public String uploadImage(@RequestParam("file") MultipartFile file) {
+    public String uploadImage(@RequestParam("file") MultipartFile file) { //
         try {
             String fileUrl = newsService.saveImage(file);
             //String fileUrl = qiniuService.saveImage(file);
             if (fileUrl == null) {
                 return ToutiaoUtil.getJSONString(1, "上传图片失败");
             }
-            return ToutiaoUtil.getJSONString(0, fileUrl);
+            return ToutiaoUtil.getJSONString(0, fileUrl);  //发到前端去
         } catch (Exception e) {
             logger.error("上传图片失败" + e.getMessage());
             return ToutiaoUtil.getJSONString(1, "上传失败");
