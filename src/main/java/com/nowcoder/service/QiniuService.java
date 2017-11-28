@@ -21,8 +21,10 @@ import java.util.UUID;
 public class QiniuService {
     private static final Logger logger = LoggerFactory.getLogger(QiniuService.class);
     //设置好账号的ACCESS_KEY和SECRET_KEY
-    String ACCESS_KEY = "abNXnXBIlI6viRaOeRY6Hk-zc3V-NpjLcGfYz5kD";
-    String SECRET_KEY = "QP7Xja3FmP1Zyl-oxwQDCb7T6wCoEFKoO-0vht_5";
+    //String ACCESS_KEY = "abNXnXBIlI6viRaOeRY6Hk-zc3V-NpjLcGfYz5kD";
+    //String SECRET_KEY = "QP7Xja3FmP1Zyl-oxwQDCb7T6wCoEFKoO-0vht_5";
+    String ACCESS_KEY = "aG_yojZxPfmqDzfBWegEfqtRUe1nhiH3c8kSo2Na";
+    String SECRET_KEY = "60f1ovd2FS1q3cM4Q5e42pyQucoh1lbAmG2vR4fF";
     //要上传的空间
     String bucketname = "nowcoder";
 
@@ -31,8 +33,8 @@ public class QiniuService {
     //创建上传对象
     UploadManager uploadManager = new UploadManager();
 
-    private static String QINIU_IMAGE_DOMAIN = "http://7xsetu.com1.z0.glb.clouddn.com/";
-
+    //private static String QINIU_IMAGE_DOMAIN = "http://7xsetu.com1.z0.glb.clouddn.com/";
+    private static String QINIU_IMAGE_DOMAIN = "http://p03t0y570.bkt.clouddn.com/";
     //简单上传，使用默认策略，只需要设置上传的空间名就可以了
     public String getUpToken() {
         return auth.uploadToken(bucketname);
@@ -53,6 +55,8 @@ public class QiniuService {
             //调用put方法上传
             Response res = uploadManager.put(file.getBytes(), fileName, getUpToken());
             //打印返回的信息
+            //System.out.println(res.bodyString());
+            System.out.println(res.toString());
             if (res.isOK() && res.isJson()) {
                 return QINIU_IMAGE_DOMAIN + JSONObject.parseObject(res.bodyString()).get("key");
             } else {

@@ -69,7 +69,7 @@ public class LoginController {
                     cookie.setMaxAge(3600*24*5);
                 }
                 response.addCookie(cookie);
-                return ToutiaoUtil.getJSONString(0, "注册成功");
+                return ToutiaoUtil.getJSONString(0, "登陆成功");
             } else {
                 return ToutiaoUtil.getJSONString(1, map);
             }
