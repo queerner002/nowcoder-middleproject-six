@@ -42,6 +42,12 @@ public class QiniuService {
 
     public String saveImage(MultipartFile file) throws IOException {
         try {
+            String s = file.getName();
+            String s1 = file.getOriginalFilename();
+            byte[] bytes = file.getBytes();
+            String contentType = file.getContentType();
+            long size = file.getSize();
+
             int dotPos = file.getOriginalFilename().lastIndexOf(".");
             if (dotPos < 0) {
                 return null;

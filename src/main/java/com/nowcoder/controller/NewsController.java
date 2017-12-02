@@ -88,6 +88,7 @@ public class NewsController {
     @ResponseBody
     public String uploadImage(@RequestParam("file") MultipartFile file) { //
         try {
+
             //String fileUrl = newsService.saveImage(file);
             String fileUrl = qiniuService.saveImage(file);
             if (fileUrl == null) {
